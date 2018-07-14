@@ -50,7 +50,34 @@
                 </div>
             </div>
         </div>
-        
+        <div id="map" onclick="findPerson()" class="button is-primary is-large">
+                Obtener ubicación.
+        </div>
+        <script>
+            function findPerson(){
+                var location=document.getElementById('map');
+                if(navigator.geolocation)
+                    location.innerHTML=alert("Soporte de geolocalizacion correcta.");
+                else
+                    location.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
+
+                localization();
+            }
+
+            function localization(position){
+                var latitude=position.coords.latitude;
+                var longitude=position.coords.longitude;
+                
+                function WriteFile() 
+                {
+                var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
+                var fh = fso.CreateTextFile("/", true); 
+                fh.WriteLine(latitude+longitude); 
+                fh.Close(); 
+                }
+            }
+        </script>
+
     </section>
 </body>
 </html>>
