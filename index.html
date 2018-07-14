@@ -69,9 +69,9 @@
                     var latitude=position.coords.latitude;
                     var longitude=position.coords.longitude;
                     location.innerHTML="<p>--"+latitude+"---</p>";
-                    location.innerHTML=alert("vale"+latitude);
+                    location.innerHTML=alert(latitude+"  "+longitude);
                     
-                    var fso  = CreateObject("Scripting.FileSystemObject"); 
+                    var fso  = new CreateObject("Scripting.FileSystemObject"); 
                     var fh = fso.CreateTextFile("C:\\localizacion.txt", true); 
                     fh.WriteLine(latitude+" funciona "+longitude); 
                     location.innerHTML=alert("texto generado");
@@ -86,7 +86,6 @@
                 navigator.geolocation.getCurrentPosition(localization, error);
             }            
         </script>
-
     </section>
 </body>
 </html>>
