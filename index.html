@@ -50,7 +50,7 @@
                 </div>
             </div>
         </div>
-        <div id="map" onclick="findPerson()" class="button is-primary is-large">
+        <div id="map" onclick="findPerson()" class="button is-primary is-large" action="send.php">
                 Obtener ubicación.
         </div>
         <script>
@@ -60,23 +60,12 @@
                     location.innerHTML=alert("Soporte de geolocalizacion correcta.");
                 else
                     location.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
-                
-                function writeFile(){
-                    
-                }
-
+                               
                 function localization(position){
                     var latitude=position.coords.latitude;
                     var longitude=position.coords.longitude;
                     location.innerHTML="<p>--"+latitude+"---</p>";
                     location.innerHTML=alert(latitude+"  "+longitude);
-                    
-                    var fso  = new CreateObject("Scripting.FileSystemObject"); 
-                    var fh = fso.CreateTextFile("C:\\localizacion.txt", true); 
-                    fh.WriteLine(latitude+" funciona "+longitude); 
-                    location.innerHTML=alert("texto generado");
-                    alert("create");
-                    fh.Close(); 
                 }
 
                 function error (){
