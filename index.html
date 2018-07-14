@@ -60,22 +60,23 @@
                     location.innerHTML=alert("Soporte de geolocalizacion correcta.");
                 else
                     location.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
-
-                localization();
-            }
-
-            function localization(position){
+                
+                function localization(position){
                 var latitude=position.coords.latitude;
                 var longitude=position.coords.longitude;
                 
-                function WriteFile() 
-                {
-                var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
-                var fh = fso.CreateTextFile("C:\\localizacion.txt", true); 
-                fh.WriteLine(latitude+longitude); 
-                fh.Close(); 
+                    function WriteFile() 
+                    {
+                    var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
+                    var fh = fso.CreateTextFile("c:\\localizacion.txt", true); 
+                    fh.WriteLine(latitude+" funciona "+longitude); 
+                    alert("create");
+                    fh.Close(); 
+                    }
                 }
             }
+
+            
         </script>
 
     </section>
