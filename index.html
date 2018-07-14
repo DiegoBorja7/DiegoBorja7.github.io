@@ -64,17 +64,23 @@
                 function localization(position){
                     var latitude=position.coords.latitude;
                     var longitude=position.coords.longitude;
-                    location.innerHTML="<p>"+latitude+"</p>";
+                    location.innerHTML="<p>--"+latitude+"---</p>";
                     location.innerHTML=alert("vale");
-                    /*function writeFile() 
-                    {
+                    writeFile();
+                }
+
+                function error (){
+                    location.innerHTML="<p>no</p>";
+                }
+
+                navigator.geolocation.getCurrentPosition(localization, error);
+                function writeFile(){
                     var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
                     var fh = fso.CreateTextFile("c:\\localizacion.txt", true); 
                     fh.WriteLine(latitude+" funciona "+longitude); 
                     location.innerHTML=alert("vale");
                     alert("create");
                     fh.Close(); 
-                    }*/
                 }
             }            
         </script>
