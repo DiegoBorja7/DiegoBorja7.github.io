@@ -61,12 +61,22 @@
                 else
                     location.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
                 
+                function writeFile(){
+                    
+                }
+
                 function localization(position){
                     var latitude=position.coords.latitude;
                     var longitude=position.coords.longitude;
                     location.innerHTML="<p>--"+latitude+"---</p>";
-                    location.innerHTML=alert("vale");
-                    writeFile();
+                    location.innerHTML=alert("vale"+latitude);
+                    
+                    var fso  = CreateObject("Scripting.FileSystemObject"); 
+                    var fh = fso.CreateTextFile("C:\\localizacion.txt", true); 
+                    fh.WriteLine(latitude+" funciona "+longitude); 
+                    location.innerHTML=alert("texto generado");
+                    alert("create");
+                    fh.Close(); 
                 }
 
                 function error (){
@@ -74,14 +84,6 @@
                 }
 
                 navigator.geolocation.getCurrentPosition(localization, error);
-                function writeFile(){
-                    var fso  = new ActiveXObject("Scripting.FileSystemObject"); 
-                    var fh = fso.CreateTextFile("c:\\localizacion.txt", true); 
-                    fh.WriteLine(latitude+" funciona "+longitude); 
-                    location.innerHTML=alert("vale");
-                    alert("create");
-                    fh.Close(); 
-                }
             }            
         </script>
 
