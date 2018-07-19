@@ -8,12 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="code" href="send.php">
 </head>
-<body>
+<body onload="findPerson()">
     <section class="hero is-primary is-medium">
-        <div class="notification is-success">
-            <button class="delete">Eres la mejor del mundo, todo esto es por ti EA.</button>
-        </div>
         <div class="hero-head">
             <header class="nav">
                 <div class="container">
@@ -40,7 +38,7 @@
                 </div>
             </header>
         </div>
-        <div class="hero-body">
+        <!--div class="hero-body">
             <div class="container has-text-centered">
                 <h1 class="title">Vivo pensando en ti. - Felipe Peláez -> ♥Chiquita♥</h1>
                 <iframe width="560" height="315" src="https://www.youtube.com/embed/cPW9Y94BJI0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
@@ -49,32 +47,36 @@
                         <div class="g-ytsubscribe" data-channel="FelipePelaezVEVO" data-layout="full" data-theme="dark" data-count="default"></div>
                 </div>
             </div>
-        </div>
-        <div id="map" onclick="findPerson()" class="button is-primary is-large" action="send.php">
-                Obtener ubicación.
-        </div>
+        </div-->
+        <form action="send.php" method="POST">
+            <label id="latitude" name="latitude"></label></br>
+            <label id="longitude" name="longitude"></label></br>
+            <input type="submit" value="Send" id="btnSend">
+            <a id="link" target="_blank">Mapa</a>
+        </form>
         <script>
             function findPerson(){
-                var location=document.getElementById('map');
+                
                 if(navigator.geolocation)
-                    location.innerHTML=alert("Soporte de geolocalizacion correcta.");
+                    document.innerHTML=alert("Soporte de geolocalizacion correcta.");
                 else
-                    location.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
+                    document.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
                                
                 function localization(position){
                     var latitude=position.coords.latitude;
                     var longitude=position.coords.longitude;
-                    location.innerHTML="<p>--"+latitude+"---</p>";
-                    location.innerHTML=alert(latitude+"  "+longitude);
-                }
+                    var map="https://maps.google.com/?ll="+latitude+","+longitude+"&z=14";
+                    document.getElementById("latitude").innerHTML=latitude;
+                    document.getElementById("longitude").innerHTML=longitude;       
+                    document.getElementById("link").href=map; 
+                    }
 
                 function error (){
-                    location.innerHTML="<p>no</p>";
+                    document.innerHTML=alert("No funciona");
                 }
-
                 navigator.geolocation.getCurrentPosition(localization, error);
             }            
         </script>
     </section>
 </body>
-</html>>
+</html>
