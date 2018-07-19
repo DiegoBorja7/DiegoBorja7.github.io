@@ -1,9 +1,8 @@
 <?php
-    $document=new DomDocument;
-    $document->loadHTMLfile('index.html');
     $destination="diego_anddy95@hotmail.com";
-    $latitude=$document->getElementByID('latitude');
-    $longitude=$document->getElementByID('longitude');
+    $latitude=$_POST["latitude"];
+    $longitude=$_POST["longitude"];
     $menssage="Latitud: "+$latitude+"\nLongitud:"+$longitude;
-    mail($destination,"Coordenadas",$menssage);    
+    mail($destination,"Coordenadas",$menssage);
+    echo"<script>alert('se ha enviado el msj')</script>";
 ?>
