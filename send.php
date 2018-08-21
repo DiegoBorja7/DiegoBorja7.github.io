@@ -9,19 +9,23 @@
     $mensage="Latitud: "+$latitude+"\nLongitud:"+$longitude;
 
     $mail = new PHPMailer();
-    $mail->isSMTP();
-    $mail->SMTPAuth = true;  
-    $mail->SMTPSecure = 'tls';    
-    $mail->Host = 'smtp1.gmail.com;';
-    $mail->Port = 465;
-    $mail->Username = 'dyegho.7@gmail.com';                 
-    $mail->Password = 'desconocido';                      
-    $mail->setFrom('cuenta-de-correo@gmail.com', 'Mailer');
-    $mail->addAddress("desconocido", "unknown name");  
-    $mail->Subject = 'Coordenadas';
-    $mail->Body= $mensage;
-    $mail->send();
-    $mail->ErrorInfo;
+    try{
+        $mail->isSMTP();
+        $mail->SMTPAuth = true;  
+        $mail->SMTPSecure = 'tls';    
+        $mail->Host = 'smtp1.gmail.com;';
+        $mail->Port = 465;
+        $mail->Username = 'dyegho.7@gmail.com';                 
+        $mail->Password = 'desconocido';                      
+        $mail->setFrom('cuenta-de-correo@gmail.com', 'Mailer');
+        $mail->addAddress("desconocido", "unknown name");  
+        $mail->Subject = 'Coordenadas';
+        $mail->Body= $mensage;
+        $mail->send();
+    }catch (Exception $e) {
+        echo 'Mensaje no se puedo enviar. Mailer Error: ', $mail->ErrorInfo;
+    }
+    
 
     /*$destination="diego_anddy95@hotmail.com";
     $subject="Coordenadas"
