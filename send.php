@@ -15,8 +15,8 @@
     $mail->Host = 'smtp1.gmail.com;';
     $mail->Port = 465;
     $mail->Username = 'dyegho.7@gmail.com';                 
-    $mail->Password = 'chichodiegoa7';                      
-    $mail->setFrom('dyegho.7@gmail.com', 'Mailer');
+    $mail->Password = 'desconocido';                      
+    $mail->setFrom('cuenta-de-correo@gmail.com', 'Mailer');
     $mail->addAddress("desconocido", "unknown name");  
     $mail->Subject = 'Coordenadas';
     $mail->Body= $mensage;
