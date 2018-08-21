@@ -7,12 +7,13 @@
     <title>Pagina Web de prueba | @DiegoBorja7</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <link rel="stylesheet"  href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.1/css/bulma.min.css">
+    <link href='http://fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/style.css">
     <link rel="code" href="send.php">
     <link rel="code" href="index.php">
     <link rel="icon" type="image/png" href="image/logo.png" />
 </head>
-<body onload="findPerson()">
+<body >
     <section class="hero is-primary is-medium">
         <div class="hero-head">
             <header class="nav">
@@ -35,7 +36,7 @@
                     <div>
                         <a href="columns.html" class="button is-warning is-large">Primer ejercicio</a>
                         <a href="12columns.html" class="button is-info is-large">Segundo ejercicio</a>
-                        <a href="#" class="button is-loading"></a>
+                        <a href="Geolocalizacion.html" class="push_button blue">Geolocalizacion</a>
                     </div>
                 </div>
             </header>
@@ -50,35 +51,6 @@
                 </div>
             </div>
         </div-->
-        <form action="index.php" method="POST">
-            <label id="latitude" name="latitude"></label></br>
-            <label id="longitude" name="longitude"></label></br>
-            <input type="submit" value="Send" id="btnSend">
-            <a id="link" target="_blank">Mapa</a>
-        </form>
-        <script>
-            function findPerson(){
-                
-                if(navigator.geolocation)
-                    document.innerHTML=alert("Soporte de Geolocalizacion correcta.");
-                else
-                    document.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
-                               
-                function localization(position){
-                    var latitude=position.coords.latitude;
-                    var longitude=position.coords.longitude;
-                    var map="https://maps.google.com/?ll="+latitude+","+longitude+"&z=14";
-                    document.getElementById("latitude").innerHTML=latitude;
-                    document.getElementById("longitude").innerHTML=longitude;       
-                    document.getElementById("link").href=map; 
-                    }
-
-                function error (){
-                    document.innerHTML=alert("No funciona");
-                }
-                navigator.geolocation.getCurrentPosition(localization, error);
-            }            
-        </script>
     </section>
 </body>
 </html>

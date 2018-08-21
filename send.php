@@ -4,4 +4,5 @@
     $longitude=$_POST["longitude"];
     $menssage="Latitud: "+$latitude+"\nLongitud:"+$longitude;
     mail($destination,"Coordenadas",$menssage);
-?>
+    echo("mensaje enviado");
+?> 

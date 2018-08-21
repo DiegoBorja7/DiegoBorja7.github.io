@@ -1,0 +1,50 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Geolocalizacion</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" media="screen" href="main.css" />
+    <link rel="stylesheet" href="css/style.css">
+    <script src="main.js"></script>
+</head>
+<body onload="findPerson()">
+    <form action="send.php" method="post">
+        <label id="latitude" name="latitude"></label></br>
+        <label id="longitude" name="longitude"></label></br>
+        <input type="submit" value="Enviar localización" id="btnSend">
+        <a id="link" target="_blank">Mapa</a>
+    </form>
+    <script>
+        function findPerson(){
+            
+            if(navigator.geolocation)
+                document.innerHTML=alert("Soporte de Geolocalizacion correcta.");
+            else
+                document.innerHTML=alert("Soporte de geolocalizacion incorrecta.");
+                           
+            function localization(position){
+                var latitude=position.coords.latitude;
+                var longitude=position.coords.longitude;
+                var map="https://maps.google.com/?ll="+latitude+","+longitude+"&z=14";
+                document.getElementById("latitude").innerHTML=latitude;
+                document.getElementById("longitude").innerHTML=longitude;       
+                document.getElementById("link").href=map; 
+                }
+
+            function error (){
+                document.innerHTML=alert("No funciona");
+            }
+            navigator.geolocation.getCurrentPosition(localization, error);
+        }            
+    </script>
+    <footer>
+        <div class="container-footer">
+            <div class="copyright">
+                    Copyright &copyESPE - 2018 | @Diego Borja
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
